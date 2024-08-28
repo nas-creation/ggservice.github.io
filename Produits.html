@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits</title>
+    <link rel="stylesheet" href="Projet3.css">
+    <style>
+        /* Style pour la page des produits */
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .product img {
+            max-width: 100px;
+        }
+        .add-to-cart {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="S2">
+        <div class="S3">
+            <img src="logo_1.png" alt="Boutique">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Projet3.html" >Accueil</a></li>
+                <li><a href="Produits.html" >Produits</a></li>
+                <li><a href="Panier.html" >Panier</a></li>
+                <img src="iconbasket.png" alt="Panier" width="25px" height="25p">
+                <li><a href="Connexion.html" >Connexion</a></li>
+                
+            </ul>
+        </nav>
+    </header> 
+    <header>
+        <div class="search-container">
+            <form id="search-form" action="/search" method="GET">
+                <input type="text" placeholder="Rechercher des produits..." name="search" class="search-input">
+                <button type="submit" class="search-button">Rechercher</button>
+            </form>
+        </div>
+        
+        <div id="search-results"></div>
+        
+        
+    </header>
+    
+<br>
+    <div class="col">
+        <h2> &#8594; LES PRODUITS</h2>
+                   </div>
+   <section class="row">
+    <div class="product">
+        <img src="S1.jpg" alt="Produit 1">
+        <p>Produit 1</p>
+        <p>Prix: 10,00 €</p>
+        <button class="add-to-cart" data-id="1" data-name="Produit 1" data-price="10.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S2.jpg" alt="Produit 2">
+        <p>Produit 2</p>
+        <p>Prix: 12,00 €</p>
+        <button class="add-to-cart" data-id="2" data-name="Produit 2" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S3.jpg" alt="Produit 3">
+        <p>Produit 3</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="3" data-name="Produit 3" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S4.jpg" alt="Produit 4">
+        <p>Produit 4</p>
+        <p>Prix: 10,00 €</p>
+        <button class="add-to-cart" data-id="4" data-name="Produit 4" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S5.jpg" alt="Produit 5">
+        <p>Produit 5</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="5" data-name="Produit 5" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S6.jpg" alt="Produit 6">
+        <p>Produit 6</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="6" data-name="Produit 6" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S8.jpg" alt="Produit 7">
+        <p>Produit 7</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="7" data-name="Produit 7" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="S9.jpg" alt="Produit 8">
+        <p>Produit 8</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="8" data-name="Produit 8" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="th (4).jpg" alt="Produit 9">
+        <p>Produit 9</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="9" data-name="Produit 9" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (14).jpg" alt="Produit 10">
+        <p>Produit 10</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="10" data-name="Produit 10" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (15).jpg" alt="Produit 11">
+        <p>Produit 11</p>
+        <p>Prix: 12,00 €</p>
+        <button class="add-to-cart" data-id="11" data-name="Produit 11" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="th (11).jpg" alt="Produit 12">
+        <p>Produit 12</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="12" data-name="Produit 12" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (1).jpg" alt="Produit 13">
+        <p>Produit 13</p>
+        <p>Prix: 18,00 €</p>
+        <button class="add-to-cart" data-id="13" data-name="Produit 13" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (2).jpg" alt="Produit 14">
+        <p>Produit 14</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="14" data-name="Produit 14" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (3).jpg" alt="Produit 15">
+        <p>Produit 15</p>
+        <p>Prix: 11,00 €</p>
+        <button class="add-to-cart" data-id="15" data-name="Produit 15" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (4).jpg" alt="Produit 16">
+        <p>Produit 16</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="16" data-name="Produit 16" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (5).jpg" alt="Produit 17">
+        <p>Produit 17</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="17" data-name="Produit 17" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (6).jpg" alt="Produit 18">
+        <p>Produit 18</p>
+        <p>Prix: 20,00 €</p>
+        <button class="add-to-cart" data-id="18" data-name="Produit 18" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (7).jpg" alt="Produit 19">
+        <p>Produit 19</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="19" data-name="Produit 19" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (8).jpg" alt="Produit 20">
+        <p>Produit 20</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="20" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+     <div class="product">
+        <img src="OIP (9).jpg" alt="Produit 21">
+        <p>Produit 21</p>
+        <p>Prix: 8,00 €</p>
+        <button class="add-to-cart" data-id="21" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+     <div class="product">
+        <img src="OIP (10).jpg" alt="Produit 22">
+        <p>Produit 22</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="22" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+     <div class="product">
+        <img src="OIP (11).jpg" alt="Produit 23">
+        <p>Produit 23</p>
+        <p>Prix: 5,00 €</p>
+        <button class="add-to-cart" data-id="23" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+     <div class="product">
+        <img src="OIP (12).jpg" alt="Produit 24">
+        <p>Produit 24</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="24" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div> 
+    <div class="product">
+        <img src="OIP (13).jpg" alt="Produit 25">
+        <p>Produit 25</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="25" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (14).jpg" alt="Produit 26">
+        <p>Produit 26</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="26" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    
+    <div class="product">
+        <img src="OIP (15).jpg" alt="Produit 27">
+        <p>Produit 27</p>
+        <p>Prix: 17,00 €</p>
+        <button class="add-to-cart" data-id="27" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (16).jpg" alt="Produit 28">
+        <p>Produit 28</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="28" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (17).jpg" alt="Produit 29">
+        <p>Produit 29</p>
+        <p>Prix: 14,00 €</p>
+        <button class="add-to-cart" data-id="29" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (18).jpg" alt="Produit 30">
+        <p>Produit 30</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="30" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (19).jpg" alt="Produit 31">
+        <p>Produit 31</p>
+        <p>Prix: 16,00 €</p>
+        <button class="add-to-cart" data-id="31" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (20).jpg" alt="Produit 32">
+        <p>Produit 32</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="32" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="OIP (21).jpg" alt="Produit 33">
+        <p>Produit 33</p>
+        <p>Prix: 9,00 €</p>
+        <button class="add-to-cart" data-id="33" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (1).jpg" alt="Produit 34">
+        <p>Produit 34</p>
+        <p>Prix: 19,00 €</p>
+        <button class="add-to-cart" data-id="34" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (2).jpg" alt="Produit 35">
+        <p>Produit 35</p>
+        <p>Prix: 17,00 €</p>
+        <button class="add-to-cart" data-id="35" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (3).jpg" alt="Produit 36">
+        <p>Produit 36</p>
+        <p>Prix: 15,00 €</p>
+        <button class="add-to-cart" data-id="36" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (4).jpg" alt="Produit 37">
+        <p>Produit 37</p>
+        <p>Prix: 18,00 €</p>
+        <button class="add-to-cart" data-id="37" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (5).jpg" alt="Produit 38">
+        <p>Produit 38</p>
+        <p>Prix: 9,00 €</p>
+        <button class="add-to-cart" data-id="38" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (6).jpg" alt="Produit 39">
+        <p>Produit 39</p>
+        <p>Prix: 10,00 €</p>
+        <button class="add-to-cart" data-id="39" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+    <div class="product">
+        <img src="télécharger (7).jpg" alt="Produit 40">
+        <p>Produit 40</p>
+        <p>Prix: 13,00 €</p>
+        <button class="add-to-cart" data-id="40" data-name="Produit 20" data-price="15.00">Ajouter au panier</button>
+    </div>
+   </section>
+
+    <script>
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                let productId = this.dataset.id;
+                let productName = this.dataset.name;
+                let productPrice = this.dataset.price;
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ id: productId, name: productName, price: productPrice });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(productName + ' a été ajouté au panier');
+            });
+        });
+
+        // server.js (exemple avec Node.js et Express)
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.static('public')); // Servir les fichiers statiques
+
+app.get('/search', (req, res) => {
+    const searchTerm = req.query.search;
+    // Logique de recherche ici, par exemple, interroger une base de données
+    res.send(`Résultats pour: ${searchTerm}`);
+});
+
+app.listen(port, () => {
+    console.log(`Serveur démarré sur http://localhost:${port}`);
+});
+
+
+
+
+    </script>
+     <footer class="fin">
+        <p>
+            <h2>&copy; 2024 Boutique de Lingerie. Tous droits réservés.</h2>
+        </p>
+    </footer>
+
+</body>
+</html>

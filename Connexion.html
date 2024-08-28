@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="Projet3.css">
+</head>
+<body >
+    <div class="login-container">
+        <form id="loginForm" class="login-form">
+            <h2>Connexion</h2>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+            
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+            
+            <button type="submit" class="login-button">Se connecter</button>
+        </form>
+    </div>
+    
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Exemple simple de validation (vous devriez vérifier cela avec votre backend)
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+    
+        if (email === "user@example.com" && password === "correct_password") {
+            // Redirection vers la page des produits après connexion réussie
+            window.location.href ="Produits.html";
+        } else {
+            alert("Identifiants incorrects");
+        }
+    });
+    </script>
+    
+    <br>
+    <h3><a href="inscription.html">S'inscrire</a></h3>
+        </div>
+    <footer class="fin">
+        <p>
+           &copy; 2024 Boutique de Lingerie. Tous droits réservés.
+        </p>
+    </footer>
+</body>
+</html> 

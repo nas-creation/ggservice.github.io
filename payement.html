@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement</title>
+    <!-- Inclure la librairie Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Inclure le SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=VOTRE_CLE_CLIENT_PAYPAL"></script>
+    <style>
+        /* Styles pour le formulaire de paiement */
+        .payment-method {
+            margin-bottom: 20px;
+        }
+        .payment-method label {
+            font-weight: bold;
+        }
+        #card-element, #paypal-button-container, #momo-button-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #submit {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #submit:hover {
+            background-color: #e65c00;
+        }
+        #card-errors, #momo-errors {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Paiement</h2>
+
+    <!-- Sélection du mode de paiement -->
+    <div class="payment-method">
+        <label>Choisissez votre méthode de paiement :</label><br>
+        <input type="radio" name="payment-method" id="stripe-method" checked> Carte Bancaire (via Stripe)<br>
+        <input type="radio" name="payment-method" id="paypal-method"> PayPal<br>
+        <input type="radio" name="payment-method" id="momo-method"> Mobile Money (MTN, Moov)<br>
+        <input type="radio" name="payment-method" id="bank-method"> Bank Transfer (BOA)<br>
+    </div>
+
+    <!-- Formulaire Stripe -->
+    <div id="stripe-container">
+        <form id="payment-form">
+            <div id="card-element">
+                <!-- Stripe Elements sera inséré ici -->
+            </div>
+            <button id="submit">Payer</button>
+            <div id="card-errors" role="alert"></div>
+        </form>
+    </div>
+
+    <!-- Bouton PayPal -->
+    <div id="paypal-button-container" style="display:none;"></div>
+
+    <!-- Mobile Money -->
+    <div id="momo-container" style="display:none;">
+        <button id="momo-submit">Payer avec Mobile Money</button>
+        <div id="momo-errors" role="alert"></div>
+    </div>
+
+    <!-- Information pour le transfert bancaire -->
+    <div id="bank-container" style="display:none;">
+        <p>Veuillez transférer le montant à l'une des banques suivantes :</p>
+        <ul>
+            <li><strong>Bank of Africa (BOA)</strong>: Numéro de compte: 123456789</li>
+            <li><strong>Moov Money</strong>: Numéro de compte: 166464461456</li>
+            <li><strong>MTN Mobile Money</strong>: Numéro de compte: 69976617</li>
+        </ul>
+        <p>Une fois le paiement effectué, envoyez la preuve à notre service client.</p>
+    </div>
+
+    <script>
+        // Gestion de la visibilité des formulaires en fonction de la méthode choisie
+        const stripeContainer = document.getElementById('stripe-container');
+        const paypalContainer = document.getElementById('paypal-button-container');
+        const momoContainer = document.getElementById('momo-container');
+        const bankContainer = document.getElementById('bank-container');
+
+        document.querySelectorAll('input[name="payment-method"]').forEach((elem) => {
+            elem.addEventListener('change', function(event) {
+                stripeContainer.style.display = 'none';
+                paypalContainer.style.display = 'none';
+                momoContainer.style.display = 'none';
+                bankContainer.style.display = 'none';
+                
+                if (event.target.id === 'stripe-method') {
+                    stripeContainer.style.display = 'block';
+                } else if (event.target.id === 'paypal-method') {
+                    paypalContainer.style.display = 'block';
+                } else if (event.target.id === 'momo-method') {
+                    momoContainer.style.display = 'block';
+                } else if (event.target.id === 'bank-method') {
+                    bankContainer.style.display = 'block';
+                }
+            });
+        });
+
+        // Intégration Stripe
+        var stripe = Stripe('VOTRE_CLE_PUBLIC_STRIPE');
+        var elements = stripe.elements();
+        var card = elements.create('card');
+        card.mount('#card-element');
+        card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            form.submit();
+        }
+
+        // Intégration PayPal
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '0.01' // Montant à modifier
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction effectuée par ' + details.payer.name.given_name);
+                    // Rediriger ou traiter la commande
+                });
+            }
+        }).render('#paypal-button-container');
+
+        // Intégration Mobile Money (MTN, Moov)
+        document.getElementById('momo-submit').addEventListener('click', function() {
+            // Logique pour Mobile Money
+            alert('Intégration Mobile Money à développer');
+            // Envoyer les données de paiement à votre back-end pour traitement
+        });
+    </script>
+
+</body>
+</html>
